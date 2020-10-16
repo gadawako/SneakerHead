@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
+import ShopForSneaker from '../ShopForSneaker/ShopForSneaker';
 
 class App extends Component {
   componentDidMount() {
@@ -92,7 +93,11 @@ class App extends Component {
               component={LandingPage}
               authRedirect="/user"
             />
-
+            <Route 
+            // This route will display sneakers
+            exact path="/shop"
+            component={ShopForSneaker}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
