@@ -10,7 +10,13 @@ import rootSaga from './redux/sagas/_root.saga'; // imports ./redux/sagas/index.
 
 import App from './components/App/App';
 
+
+// Create the rootSaga generator function
+
+// Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
+/// FETCH SAGAS ///
+// Saga used for fetching sneakers
 
 // this line creates an array of all of redux middleware you want to use
 // we don't want a whole ton of console logs in our production code
