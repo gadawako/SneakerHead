@@ -22,6 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import ShopForSneaker from '../ShopForSneaker/ShopForSneaker';
+import SellSneakers from '../SellSneakers/SellSneakers'
+import ShoppingCart from '../ShoppingCart/ShoppingCart'
 
 class App extends Component {
   componentDidMount() {
@@ -91,12 +93,22 @@ class App extends Component {
               exact
               path="/home"
               component={LandingPage}
-              authRedirect="/user"
+              authRedirect="/User"
             />
             <Route 
             // This route will display sneakers
-            exact path="/shop"
+            exact path="/Shop"
             component={ShopForSneaker}
+            />
+            <Route 
+            // This route will display sneakers
+            exact path="/Sell"
+            component={SellSneakers}
+            />
+            <Route 
+            // This route will display sneakers
+            exact path="/Cart"
+            component={ShoppingCart}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

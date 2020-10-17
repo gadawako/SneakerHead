@@ -41,6 +41,15 @@ const Nav = (props) => {
         <Link className="nav-link" to="/about">
           About
         </Link>
+        <Link className="nav-link" to="/shop">
+          Shop For Sneakers
+        </Link>
+        <Link className="nav-link" to="/sell">
+          Sell Your Sneakers
+        </Link>
+        <Link className="nav-link" to="/cart">
+          Shopping Cart
+        </Link>
       </div>
     </div>
   );
