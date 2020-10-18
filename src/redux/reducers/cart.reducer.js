@@ -1,6 +1,6 @@
-const sneakersReducer = (state = [], action) => {
+const cartReducer = (state = [], action) => {
     switch (action.type) {
-      case 'SET_SNEAKERS':
+      case 'SET_CART':
         return action.payload;
       default:
         return state;
@@ -8,5 +8,5 @@ const sneakersReducer = (state = [], action) => {
   };
 
   // user will be on the redux state at:
-
-  export default sneakersReducer;
+ 
+  export default cartReducer;

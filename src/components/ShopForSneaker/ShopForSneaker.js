@@ -4,7 +4,6 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ShopForSneaker extends Component {
     componentDidMount(){
-        console.log('Sneakers list')
         this.getSneakers(); 
     }
      // Starts FETCH_SNEAKERS saga to initiate database GET call for sneaker list
@@ -13,21 +12,36 @@ class ShopForSneaker extends Component {
             type: 'FETCH_SNEAKERS'
         })
     }
+    addLike = () => {
+        console.log('addLike')
+    }
+    // addToCart = (id) => {
+    //     console.log('add to cart', id)
+        
+    // }
+    addToCart = (id) => {
+        console.log(id)
+        this.props.dispatch({
+            type: 'SEND_SNEAKER',
+            payload:id
+        })
+    }
     render() {
-        console.log(this.props.store.sneakers)
+
         return(
             <div>
                 <h1>Shopping For Sneakers</h1>
                 {this.props.store.sneakers.map(sneaker => 
                 <li>{sneaker.Brand} {sneaker.Name} Size: {sneaker.Size} Condition: {sneaker.Condition}
-                 <button>Like</button> <button>Add to Cart</button>
+                 <button onClick={()=>this.addLike(sneaker)}>Like</button> 
+                 <button onClick={()=>this.addToCart(sneaker.id)}>Add to Cart</button>
                  <label for="Size">Size?</label>
-  <select name="cars" id="cars">
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-  </select>
+                    <select name="Size" id="Size">
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
                   </li>
                 )}
             </div>
