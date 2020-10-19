@@ -7,8 +7,7 @@ class ShoppingCart extends Component {
         
     }
     boughtSneakers = () => {
-        console.log('sneakrs have been bought')
-        alert('Buying sneakers')
+        alert('Sneakers have been bought!')
     }
 
     render() {
