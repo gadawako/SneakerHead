@@ -93,19 +93,19 @@ class App extends Component {
               exact
               path="/home"
               component={LandingPage}
-              authRedirect="/User"
+              authRedirect="/user"
             />
             <Route 
             // This route will display sneakers
             exact path="/Shop"
             component={ShopForSneaker}
             />
-            <Route 
+            <Route  
             // This route will display sneakers
             exact path="/Sell"
             component={SellSneakers}
             />
-            <Route 
+            <Route
             // This route will display sneakers
             exact path="/Cart"
             component={ShoppingCart}

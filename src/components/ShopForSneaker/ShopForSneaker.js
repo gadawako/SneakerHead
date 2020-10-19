@@ -27,7 +27,6 @@ class ShopForSneaker extends Component {
         })
     }
     render() {
-
         return(
             <div>
                 <h1>Shopping For Sneakers</h1>
@@ -37,6 +36,7 @@ class ShopForSneaker extends Component {
                  <button onClick={()=>this.addToCart(sneaker.id)}>Add to Cart</button>
                  <label for="Size">Size?</label>
                     <select name="Size" id="Size">
+                        <option></option>
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
