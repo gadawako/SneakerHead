@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // worker Saga: will be fired on "CART" actions
 
-function* sendSneakerSaga(action) {
+function* sendSneakerToCartSaga(action) {
     console.log('sending sneakers to shopping cart', action.type)
     let response = yield axios({
         method: 'POST',
@@ -17,6 +17,6 @@ function* sendSneakerSaga(action) {
 }
 
 function* cartSaga(){
-    yield takeLatest('SEND_SNEAKER', sendSneakerSaga)
+    yield takeLatest('SEND_SNEAKER', sendSneakerToCartSaga)
 }
 export default cartSaga;

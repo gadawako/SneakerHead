@@ -13,7 +13,7 @@ function* fetchSneakersSaga(action) {
       payload: response.data
     })
   }
-
+  
 function* sneakerSaga() {
   yield takeLatest('FETCH_SNEAKERS', fetchSneakersSaga);
 }

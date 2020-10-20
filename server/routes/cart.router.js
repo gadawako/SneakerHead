@@ -24,4 +24,19 @@ router.get('/:id',(req,res) => {
     console.log('in cart id router GET')
 })
 
+router.get('/', (req, res) => {
+    // GET route code here
+    console.log('in cart GET router')
+    const cartQuery = `
+    SELECT * FROM "Cart";`;
+    pool.query(cartQuery)
+    .then((results) => {
+        res.send(results.rows);
+    })
+    .catch((error) => {
+        console.log('ERROR SNEAKER ROUTER', error)
+        res.sendStatus(500)
+    })
+  });
+
 module.exports = router;
