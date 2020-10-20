@@ -28,7 +28,9 @@ router.get('/', (req, res) => {
     // GET route code here
     console.log('in cart GET router')
     const cartQuery = `
-    SELECT * FROM "Cart";`;
+    SELECT ("Brand", "Name","Size", "Condition")
+    FROM "Sneakers"
+    WHERE  "id" IN ( SELECT "sneaker_id" FROM "Cart" ) ;`;
     pool.query(cartQuery)
     .then((results) => {
         res.send(results.rows);

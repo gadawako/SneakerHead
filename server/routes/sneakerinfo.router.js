@@ -7,13 +7,15 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
-  console.log('YEAAAAA KJHFASKLGFLKGSFLKJGFAKLSJGLKJQSGFLKJGAF')
-  const cartQuery = `
-  SELECT * FROM "Cart";`;
-  pool.query(sneakerQuery)
+  console.log('in cart info GET router')
+  const sneakerInfoQuery = `
+  SELECT ("Brand", "Name","Size", "Condition")
+  FROM "Sneakers"
+  WHERE  "Sneaker_id" IN ( SELECT "sneaker_id" FROM "Cart" ) ;`;
+  pool.query(sneakerInfoQuery)
   .then((results) => {
       res.send(results.rows);
-      console.log("we are here",results)
+      console.log('we are here',results)
   })
   .catch((error) => {
       console.log('ERROR SNEAKER ROUTER', error)
