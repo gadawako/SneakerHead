@@ -5,6 +5,7 @@ import sneakers from './sneakers.reducer'
 import updateSize from './updatesize.reducer'
 import getCart from './getcart.reducer'
 import sneakerInfo from './sneakerinfo.reducer'
+import sellKicks from './sellkicks.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   sneakers, 
   updateSize,
   getCart,
-  sneakerInfo
+  sneakerInfo,
+  sellKicks
 });
 
 export default rootReducer;

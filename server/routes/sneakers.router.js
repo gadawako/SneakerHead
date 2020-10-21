@@ -20,4 +20,25 @@ router.get('/', (req, res) => {
   })
 });
 
+router.post('/', (req, res,) => {
+  console.log(req.body.Name)
+  const brand = req.body.brand
+  const Name = req.body.Name
+  const Size = req.body.Size
+  const Condition = req.body.Condition
+  const addSneakerQuery = `
+  INSERT INTO "Sneakers" ("Brand", "Name", "Size", "Condition")
+  VALUES ($1, $2, $3, $4) RETURNING *`;
+  pool.query(addSneakerQuery, [brand,Name,Size,Condition])
+
+  .then((results) => {
+      res.send(results.rows);
+  })
+  .catch((error) => {
+      console.log('ERROR IN ADD ROUTER', error)
+      res.sendStatus(500)
+  })
+});
+
+
 module.exports = router;

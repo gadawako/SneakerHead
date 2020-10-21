@@ -33,14 +33,15 @@ class ShoppingCart extends Component {
                 <h1>Shopping Cart</h1>
                 {/* {JSON.stringify(this.props.store.getCart)} */}
                 {this.props.store.getCart.map( cart => 
-                <div>{console.log("======>", this.props.store.getCart)}
+                <div>{console.log("======>", this.props.store.getCart.cart)}
 
                 {/* {this.props.store.cart.map((sneaker) => (
               <SneakerItem sneaker={sneaker} key={sneaker.id} />
             ))} */}
 
                 <p>{cart.sneaker_id}</p>
-                <p>{cart.brand}</p></div>
+                <p>{cart.brand}</p>
+                </div>
                     )}
                 <p>List of sneakers to buy</p>
                 <ul>

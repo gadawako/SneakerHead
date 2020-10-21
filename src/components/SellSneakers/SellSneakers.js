@@ -3,37 +3,86 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class SellSneakers extends Component {
-    componentDidMount(){
-        this.sellSneakers();
+
+    // state is holding the value of each property
+    state = {
+        brand: '',
+        Name: '',
+        Size: '',
+        Condition: ''
     }
-    sellSneakers = () => {
-        console.log('selling sneakers')
+
+    updateBrand = (event) => {
+        event.preventDefault()
+        this.setState({
+            brand: event.target.value
+        })
+        console.log(this.state)
+    }
+    updateName = (event) => {
+        event.preventDefault()
+        this.setState({
+            Name: event.target.value
+        })
+        console.log(this.state)
+    }
+    updateSize = (event) => {
+        event.preventDefault()
+        this.setState({
+            Size: event.target.value
+        })
+        console.log(this.state)
+    }
+    updateCondition = (event) => {
+        event.preventDefault()
+        this.setState({
+            Condition: event.target.value
+        })
+        console.log(this.state)
+    }
+
+    handleAddKicks = (event) => {
+        event.preventDefault()
+        this.props.dispatch({})
+    }
+
+    componentDidMount(){
+        // this.sellSneakers();
+    }
+    addSneakers = () => {
+        console.log('add sneakers')
         this.props.dispatch({
             type: 'ADD_SNEAKERS',
-            
+            payload: this.state
         })
+        this.setState({
+            brand: '',
+            Name: '',
+            Size: '',
+            Condition: ''
+        })
+        console.log(this.state)
     }
 
     render() {
         return(
             <div>
                 <h2>Sell Sneakers</h2>
-                <input placeholder="Brand?"></input>
+                <input placeholder="Brand?"
+                value={this.state.brand} onChange={this.updateBrand}
+                ></input>
                 <br></br>
-                <input placeholder="Name of Sneakers"></input>
+                <input placeholder="Name of Sneakers"
+                value={this.state.Name} onChange={this.updateName}
+                ></input>
                 <br></br>
-                <input placeholder="Size?"></input>
+                <input placeholder="Size?"
+                value={this.state.Size} onChange={this.updateSize}></input>
                 <br></br>
-                <label for="Size">Size?</label>
-                    <select name="Size" id="Size">
-                        <option></option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>
+                <input placeholder="Condition"
+                value={this.state.Condition} onChange={this.updateCondition}></input>
                     <br></br>
-                <button>Sell Sneaker</button>
+                <button onClick={()=>this.addSneakers()}>Add Sneaker</button>
             </div>
         )
     }
