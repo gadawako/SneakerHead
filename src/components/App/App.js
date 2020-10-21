@@ -95,17 +95,17 @@ class App extends Component {
               component={LandingPage}
               authRedirect="/user"
             />
-            <Route 
+            <ProtectedRoute
             // This route will display sneakers
             exact path="/Shop"
             component={ShopForSneaker}
             />
-            <Route  
+            <ProtectedRoute
             // This route will display sneakers
             exact path="/Sell"
             component={SellSneakers}
             />
-            <Route
+            <ProtectedRoute
             // This route will display sneakers
             exact path="/Cart"
             component={ShoppingCart}

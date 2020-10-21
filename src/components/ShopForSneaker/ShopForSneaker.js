@@ -20,21 +20,22 @@ class ShopForSneaker extends Component {
         console.log('addLike')
     }
 
-    addToCart = (id) => {
-        console.log(id)
+    addToCart = (sneakerId, userId) => {
+        console.log(sneakerId,userId)
         this.props.dispatch({
             type: 'SEND_SNEAKER',
-            payload:id
+            payload:{sneakerId:sneakerId,userId:userId}
         })
     }
     render() {
+        console.log(this.props.store.user.id)
         return(
             <div>
                 <h1>Shopping For Sneakers</h1>
                 {this.props.store.sneakers.map(sneaker => 
                 <li>{sneaker.Brand} {sneaker.Name} Size: {sneaker.Size} Condition: {sneaker.Condition}
-                 <button onClick={()=>this.addLike(sneaker)}>Like</button> 
-                 <button onClick={()=>this.addToCart(sneaker.id)}>Add to Cart</button>
+                 {/* <button onClick={()=>this.addLike(sneaker)}>Like</button>  */}
+                 <button onClick={()=>this.addToCart(sneaker.id, this.props.store.user.id)}>Add to Cart</button>
                  {/* <label for="Size">Size?</label>
                     <select name="Size" id="Size">
                         <option></option>

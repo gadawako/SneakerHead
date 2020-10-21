@@ -3,13 +3,14 @@ const pool = require('../modules/pool');
 const router = express.Router();
 // const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-router.post('/:id', (req, res) => {
-    console.log('in post CART router')
+router.post('/', (req, res) => {
+    console.log('in post CART router', req.body)
     // const userId = req.user.id;
-    const sneakerId = req.params.id
-    const queryText = `INSERT INTO "Cart" ("sneaker_id")
-    VALUES ($1);`;
-    pool.query(queryText, [sneakerId])
+    const sneakerId = req.body.sneakerId
+    const userId = req.body.userId
+    const queryText = `INSERT INTO "Cart" ("sneaker_id", user_id)
+    VALUES ($1,$2);`;
+    pool.query(queryText, [sneakerId, userId])
     .then((results) => {
         res.sendStatus(201);
     })
@@ -28,7 +29,7 @@ router.get('/', (req, res) => {
     // GET route code here
     console.log('in cart GET router')
     const cartQuery = `
-    SELECT ("Brand", "Name","Size", "Condition")
+    SELECT *
     FROM "Sneakers"
     WHERE  "id" IN ( SELECT "sneaker_id" FROM "Cart" ) ;`;
     pool.query(cartQuery)
