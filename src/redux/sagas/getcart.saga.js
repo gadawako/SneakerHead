@@ -3,13 +3,13 @@ import axios from 'axios';
 // import { response } from 'express';
 
 
-function* getSneakerFromCartSaga() {
+function* getSneakerFromCartSaga(action) {
     console.log('sending sneakers to shopping cart')
+    console.log('in get cart',action.payload.userId)
     let response = yield axios({
         method: 'GET',
-        url:`/cart`
+        url:`/cart/${action.payload.userId}`,
     })
-    console.log('in get cart',response)
     yield put({
         type: 'GET_CART',
         payload: response.data

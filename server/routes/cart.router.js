@@ -20,20 +20,23 @@ router.post('/', (req, res) => {
     })
 });
 
-router.get('/:id',(req,res) => {
-    // GET route code here 
-    console.log('in cart id router GET')
-})
+// router.get('/:id',(req,res) => {
+//     // GET route code here 
+//     console.log('in cart id router GET')
+// })
 
-router.get('/', (req, res) => {
+router.get('/:userId', (req, res) => {
     // GET route code here
-    console.log('in cart GET router')
+    console.log('in cart GET router', req.params)
+    const userId = req.params.userId
     const cartQuery = `
     SELECT *
     FROM "Sneakers"
-    WHERE  "id" IN ( SELECT "sneaker_id" FROM "Cart" ) ;`;
-    pool.query(cartQuery)
+    WHERE  "id" IN ( SELECT "sneaker_id" FROM "Cart"
+    WHERE "user_id"::integer = $1);`;
+    pool.query(cartQuery, [userId] )
     .then((results) => {
+        // console.log(results.rows)
         res.send(results.rows);
     })
     .catch((error) => {

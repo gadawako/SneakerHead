@@ -1,11 +1,14 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 const router = express.Router();
 
 /**
  * GET route for sneakers
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log('in sneaker GET router')
   const sneakerQuery = `
@@ -20,6 +23,8 @@ router.get('/', (req, res) => {
   })
 });
 
+// req.user.id for extra security
+// only users should add/delete etc for their own data
 router.post('/', (req, res,) => {
   console.log(req.body.Name)
   const brand = req.body.brand
