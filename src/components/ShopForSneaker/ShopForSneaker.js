@@ -28,19 +28,14 @@ class ShopForSneaker extends Component {
         return(
             <div>
                 <h1>Shopping For Sneakers</h1>
-                {this.props.store.sneakers.map(sneaker => 
-                <li>{sneaker.Brand} {sneaker.Name} Size: {sneaker.Size} Condition: {sneaker.Condition}
-                 {/* <button onClick={()=>this.addLike(sneaker)}>Like</button>  */}
-                 <button onClick={()=>this.addToCart(sneaker.id, this.props.store.user.id)}>Add to Cart</button>
-                 {/* <label for="Size">Size?</label>
-                    <select name="Size" id="Size">
-                        <option></option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select> */}
-                  </li>
+                {this.props.store.sneakers.map(sneaker =>{
+                    console.log(sneaker)
+                    if (sneaker.sold === false) {
+                        return (<li>{sneaker.Brand} {sneaker.Name} Size: {sneaker.Size} Condition: {sneaker.Condition} 
+                                <button onClick={()=>this.addToCart(sneaker.id, this.props.store.user.id)}>Add to Cart</button>
+                                </li>) 
+                    }
+                }
                 )}
             </div>
         )

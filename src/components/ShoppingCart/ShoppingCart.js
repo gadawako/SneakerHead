@@ -35,6 +35,7 @@ class ShoppingCart extends Component {
             type: 'REMOVE_SNEAKER_FROM_CART',
             payload: {sneakerId: sneakerId, userId: this.props.store.user.id}
         })
+            this.getCart();
     }
     render() {
         console.log(this.props.store.getCart)
