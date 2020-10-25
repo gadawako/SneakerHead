@@ -10,6 +10,7 @@ class ShoppingCart extends Component {
         this.getCart();
         // this.sneakerinfo();
     }
+   
     boughtSneakers = () => {
         alert('Sneakers have been bought!')
     }
@@ -27,22 +28,29 @@ class ShoppingCart extends Component {
     //         payload: this.props.store.getCart
     //     })
     // }
+    deleteSneakers = (sneakerId) => {
+        console.log('====> deleting sneakerId', sneakerId
+        )
+        this.props.dispatch({
+            type: 'REMOVE_SNEAKER_FROM_CART',
+            payload: {sneakerId: sneakerId, userId: this.props.store.user.id}
+        })
+    }
     render() {
         console.log(this.props.store.getCart)
         return(
             <div>
                 <h1>Shopping Cart</h1>
-                
-                {this.props.store.getCart.map( cart => 
-                <div>
-                <div>{cart.Brand}    
-                   {cart.Name}
-                   Size:{cart.Size}
-                  Condition{cart.Condition}
-                  <button >DELETE</button></div>
+                {this.props.store.getCart.map( sneaker => 
+                <div key={sneaker.id}>
+                    {console.log("=====> Key:", sneaker.id)}
+                    {sneaker.Brand}    
+                    {sneaker.Name}
+                    Size:{sneaker.Size}
+                    Condition{sneaker.Condition}
+                    <button onClick={()=>this.deleteSneakers(sneaker.id)}>DELETE</button>
                 </div>
                     )}
-                
                 <button onClick={()=>this.boughtSneakers()}>Purchase</button>
             </div>
         )

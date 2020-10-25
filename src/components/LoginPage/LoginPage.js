@@ -17,7 +17,7 @@ class LoginPage extends Component {
               this.props.history.push('/registration');
             }}
           >
-            Register
+            Register to be apart of our Sneaker World
           </button>
         </center>
       </div>

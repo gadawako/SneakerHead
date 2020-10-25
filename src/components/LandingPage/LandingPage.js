@@ -9,7 +9,7 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 
 class LandingPage extends Component {
   state = {
-    heading: 'Class Component',
+    heading: '',
   };
 
   onLogin = (event) => {
@@ -28,7 +28,7 @@ class LandingPage extends Component {
             <RegisterForm />
 
             <center>
-              <h4>Already a Member?</h4>
+              <h4>Already a Member of the Sneaker world??</h4>
               <button className="btn btn_sizeSm" onClick={this.onLogin}>
                 Login
               </button>

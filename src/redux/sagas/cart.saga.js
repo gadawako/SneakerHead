@@ -5,7 +5,7 @@ import axios from 'axios';
 // worker Saga: will be fired on "CART" actions
 
 function* sendSneakerToCartSaga(action) {
-    console.log('sending sneakers to shopping cart', action.payload)
+    console.log('sending sneakers to shopping cart!!!', action.payload)
     let response = yield axios({
         method: 'POST',
         url:`/cart`,

@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     // const userId = req.user.id;
     const sneakerId = req.body.sneakerId
     const userId = req.body.userId
-    const queryText = `INSERT INTO "Cart" ("sneaker_id", user_id)
+    const queryText = `INSERT INTO "Cart" ("sneaker_id", "user_id")
     VALUES ($1,$2);`;
     pool.query(queryText, [sneakerId, userId])
     .then((results) => {
@@ -19,11 +19,26 @@ router.post('/', (req, res) => {
         res.sendStatus(500)
     })
 });
-
-// router.get('/:id',(req,res) => {
-//     // GET route code here 
-//     console.log('in cart id router GET')
-// })
+    router.delete('/:userId/:sneakerId', (req,res) => {
+// delete route code here 
+    console.log('delete router', req.params)
+    const userId = req.params.userId
+    const sneakerId = req.params.sneakerId
+    const deleteText = `
+    DELETE 
+    FROM "Cart" 
+    WHERE "user_id"::integer = $1 AND 
+    "sneaker_id" = $2;
+    `;
+    pool.query(deleteText, [userId,sneakerId] )
+    .then((results) => {
+        res.send(results.rows)
+    })
+    .catch((error) => {
+        console.log( '**** Error in deleting a sneaker router', error)
+        res.sendStatus(500);
+    })
+})
 
 router.get('/:userId', (req, res) => {
     // GET route code here

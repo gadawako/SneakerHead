@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ShopForSneaker extends Component {
-
-    // state ={
-    //     size: '',
-    // }
     componentDidMount(){
         this.getSneakers(); 
     }
@@ -16,9 +12,9 @@ class ShopForSneaker extends Component {
             type: 'FETCH_SNEAKERS'
         })
     }
-    addLike = () => {
-        console.log('addLike')
-    }
+    // addLike = () => {
+    //     console.log('addLike')
+    // }
 
     addToCart = (sneakerId, userId) => {
         console.log(sneakerId,userId)

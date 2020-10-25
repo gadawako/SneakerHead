@@ -1,7 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-// import { response } from 'express';
-
 
 function* getSneakerFromCartSaga(action) {
     console.log('sending sneakers to shopping cart')
