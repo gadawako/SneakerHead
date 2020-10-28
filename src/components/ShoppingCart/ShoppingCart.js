@@ -11,8 +11,12 @@ class ShoppingCart extends Component {
         // this.sneakerinfo();
     }
    
-    boughtSneakers = () => {
+    purchaseSneakers = () => {
         alert('Sneakers have been bought!')
+        this.props.dispatch({
+            type: 'UPDATE_SNEAKER_LIST',
+            payload: {userId: this.props.store.user.id}
+        })
     }
     getCart = () => {
         console.log('getting cart')
@@ -52,7 +56,7 @@ class ShoppingCart extends Component {
                     <button onClick={()=>this.deleteSneakers(sneaker.id)}>DELETE</button>
                 </div>
                     )}
-                <button onClick={()=>this.boughtSneakers()}>Purchase</button>
+                <button onClick={()=>this.purchaseSneakers()}>Purchase</button>
             </div>
         )
     }

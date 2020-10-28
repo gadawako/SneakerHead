@@ -8,7 +8,7 @@ class SellSneakers extends Component {
     state = {
         brand: '',
         Name: '',
-        Size: '',
+        Size: null,
         Condition: ''
     }
 
@@ -51,6 +51,7 @@ class SellSneakers extends Component {
     }
     addSneakers = () => {
         console.log('add sneakers')
+        alert('Thank you for adding to the Sneaker World!')
         this.props.dispatch({
             type: 'ADD_SNEAKERS',
             payload: this.state

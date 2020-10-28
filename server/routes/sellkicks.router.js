@@ -6,7 +6,7 @@ router.post('/', (req, res,) => {
     console.log('sdbjtnuweli fkbnse lkrghbvw3578bw4i5utbeuthbv3io5v357tvbo')
     const addSneakerQuery = `
     INSERT INTO "Sneakers" ("Brand", "Name", "Size", "Condition")
-    VALUES ('Off-White Jordan', 'Sail', 9, 'Used');`;
+    VALUES ('$1', '$2', $3, '$4');`;
     pool.query(addSneakerQuery)
     .then((results) => {
         res.send(results.rows);
