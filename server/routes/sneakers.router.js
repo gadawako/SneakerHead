@@ -56,25 +56,25 @@ router.put('/', (req,res) => {
     RETURNING *
     ;
   `
-  const deleteCartQuery = `
-  DELETE 
-    FROM "Cart" 
-    WHERE "user_id" = "user_id"
-  `
   console.log(userId)
   pool.query(updateQuery, [userId],)
   .then((results) => {
     res.send(results.rows);
     console.log(results.rows)
   })
-  pool.query(deleteCartQuery, [userId])
-  .then((results) => {
-    console.log(results)
-  })
   .catch((error) => {
     console.log("ERROR IN PUT ROUTER", error)
     res.sendStatus(500)
   })
 })
+// const deleteCartQuery = `
+//   DELETE 
+//     FROM "Cart" 
+//     WHERE "user_id" = "user_id"
+//   `
+//   pool.query(deleteCartQuery, [userId])
+//   .then((results) => {
+//     console.log(results)
+//   })
 
 module.exports = router;

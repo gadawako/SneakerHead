@@ -15,7 +15,6 @@ const Nav = (props) => {
     loginLinkData.path = '/user';
     loginLinkData.text = 'Home';
   }
-
   return (
     <div className="nav">
       <Link to="/home">
